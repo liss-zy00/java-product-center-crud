@@ -1,24 +1,28 @@
-# Micro-services Orders With Kafka
+# Product Center (CRUD de produtos)
 
-## Introdução
+API REST de produtos com Spring Boot 2.6, Java 11 e banco H2 em memória. Feita num programa de bolsa,
+como projeto de estudo.
 
-O Desafio proposto é um [CRUD] de pedidos que fará interação com o Kafka para atualização de status conforme arquitetura proposta abaixo.
+![Arquitetura](img/bolsa-microservices-arquitetura-ms-products.png)
 
-![Arquitetura.](/img/bolsa-microservices-arquitetura-ms-products.png)
+## Rodar
 
+```bash
+./mvnw spring-boot:run
+```
 
-## Pré-Requisitos
+A API sobe em http://localhost:8080. O console do H2 fica em `/h2-console`
+(JDBC URL `jdbc:h2:mem:api-products`, usuário `sa`, sem senha).
 
-* Java 11
-* H2
-* Spring-Boot.
-* Swagger
+## Endpoints
 
+| Método | Rota | O que faz |
+|---|---|---|
+| GET | `/products` | Lista os produtos |
+| GET | `/products/search?q=&minPrice=&maxPrice=` | Busca por texto e faixa de preço, paginada |
+| GET | `/products/{id}` | Mostra um produto |
+| POST | `/products` | Cria |
+| PUT | `/products/{id}` | Atualiza |
+| DELETE | `/products/{id}` | Apaga |
 
-## Links
-
-Documentação [Swagger](https://github.com/walves-uol/programa-bolsa-openbanking/blob/main/swagger.yaml).
-
-
-"# compass-openbanking-api" 
-"# -compass-openbanking-api" 
+Contrato completo em [`swagger.yaml`](swagger.yaml).
